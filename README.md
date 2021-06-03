@@ -3,8 +3,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Env
 
 Add to the .env file in project root directory:
+
 ### `HTTPS=true`
+
 ### `REACT_APP_GOOGLE_ID=[your_google_app_id]`
+
 ### `REACT_APP_FB_ID=[your_fb_app_id]`
 
 ## Available Scripts

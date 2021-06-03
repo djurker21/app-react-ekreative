@@ -1,16 +1,16 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import GoogleLogin from 'react-google-login';
-import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from "react-google-login";
+import FacebookLogin from "react-facebook-login";
 
 const responseGoogle = (response: any) => {
   console.log(response);
-}
+};
 
 const responseFacebook = (response: any) => {
   console.log(response);
-}
+};
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
+        cookiePolicy={"single_host_origin"}
       />
       <br />
       <FacebookLogin
