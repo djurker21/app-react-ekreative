@@ -57,7 +57,7 @@ export function Videos() {
       <ul className="posts">
         {youtubeResult.items.map((video: Video) => (
             <li key={video.id.videoId}>
-              <img src={video.snippet.thumbnails.default.url} />
+              <img src={video.snippet.thumbnails.default.url} alt={'video_thumbnail'} />
               <p>{video.snippet.title}</p>
               <a href={'https://localhost:3000/video/' + video.id.videoId}>open</a>
             </li>
