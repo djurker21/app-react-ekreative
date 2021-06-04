@@ -10,6 +10,10 @@ Add to the .env file in project root directory:
 
 ### `REACT_APP_FB_ID=[your_fb_app_id]`
 
+### `REACT_APP_YOUTUBE_API_KEY=[youtube_api_key]`
+
+### `REACT_APP_YOUTUBE_CHANNEL=[youtube_channel_id]`
+
 ## Available Scripts
 
 In the project directory, you can run:
