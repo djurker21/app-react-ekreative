@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { IVideo } from "./ivideo";
+
+interface Video {
+  id: {videoId: string}
+  snippet: {title: string}
+}
+interface YoutubeResult {items: Video[]}
 
 export function Videos() {
   const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
   const channelId = process.env.REACT_APP_YOUTUBE_CHANNEL;
   const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet%2Cid&channelId=${channelId}&key=${apiKey}`;
 
-  const defaultVideos: IVideo[] = [];
+  const defaultYoutubeResult: YoutubeResult = {items: []};
 
-  const [videos, setVideos]: [IVideo[], (videos: IVideo[]) => void] =
-    useState(defaultVideos);
+  const [youtubeResult, setYoutubeResult]: [YoutubeResult, (youtubeResult: YoutubeResult) => void] =
+    useState(defaultYoutubeResult);
   const [loading, setLoading]: [boolean, (loading: boolean) => void] =
     useState<boolean>(true);
   const [error, setError]: [string, (error: string) => void] = useState("");
 
   useEffect(() => {
     axios
-      .get<IVideo[]>(url, {
+      .get<YoutubeResult>(url, {
         headers: {
           "Content-Type": "application/json",
         },
       })
       .then((response) => {
-        setVideos(response.data.items);
+        setYoutubeResult(response.data);
         setLoading(false);
       })
       .catch((ex) => {
@@ -34,7 +39,7 @@ export function Videos() {
         setError(error);
         setLoading(false);
       });
-  }, []);
+  });
 
   if (loading) {
     return <div>loading...</div>;
@@ -42,11 +47,10 @@ export function Videos() {
   return (
     <div className="App">
       <ul className="posts">
-        {videos.map((video) => (
-          <li key={video.id}>
-            <h3>{video.title}</h3>
-            <p>{video.body}</p>
-          </li>
+        {youtubeResult.items.map((video: Video) => (
+            <li key={video.id.videoId}>
+              <p>{video.snippet.title}</p>
+            </li>
         ))}
       </ul>
       {error && <p className="error">{error}</p>}
