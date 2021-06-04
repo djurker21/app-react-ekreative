@@ -3,8 +3,16 @@ import axios from "axios";
 
 interface Video {
   id: {videoId: string}
-  snippet: {title: string}
+  snippet: {
+    title: string
+    thumbnails: {
+      default: {
+        url: string
+      }
+    }
+  }
 }
+
 interface YoutubeResult {items: Video[]}
 
 export function Videos() {
@@ -49,7 +57,9 @@ export function Videos() {
       <ul className="posts">
         {youtubeResult.items.map((video: Video) => (
             <li key={video.id.videoId}>
+              <img src={video.snippet.thumbnails.default.url} />
               <p>{video.snippet.title}</p>
+              <a href={'https://localhost:3000/video/' + video.id.videoId}>open</a>
             </li>
         ))}
       </ul>
