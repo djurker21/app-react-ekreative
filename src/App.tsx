@@ -1,36 +1,34 @@
 import React from "react";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Videos } from "./pages/Videos";
+import { Login } from "./pages/Login";
 
-import GoogleLogin from "react-google-login";
-import FacebookLogin from "react-facebook-login";
-
-const responseGoogle = (response: any) => {
-  console.log(response);
-};
-
-const responseFacebook = (response: any) => {
-  console.log(response);
-};
-
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <GoogleLogin
-        clientId={`${process.env.REACT_APP_GOOGLE_ID}`}
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={"single_host_origin"}
-      />
-      <br />
-      <FacebookLogin
-        appId={`${process.env.REACT_APP_FB_ID}`}
-        autoLoad={true}
-        fields="name,email,picture"
-        callback={responseFacebook}
-      />
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Login</Link>
+            </li>
+            <li>
+              <Link to="/videos">Videos</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/videos">
+            <Videos />
+          </Route>
+          <Route path="/">
+            <Login />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
-
-export default App;
