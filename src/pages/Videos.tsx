@@ -1,21 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-interface Video {
-  id: { videoId: string };
-  snippet: {
-    title: string;
-    thumbnails: {
-      default: {
-        url: string;
-      };
-    };
-  };
-}
-
-interface YoutubeResult {
-  items: Video[];
-}
+import {Video, YoutubeResult} from "../app/types";
 
 export function Videos() {
   const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;

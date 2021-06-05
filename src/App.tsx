@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Videos } from "./pages/Videos";
 import { Login } from "./pages/Login";
-import { Video } from "./pages/Video";
+import { SingleVideo } from "./pages/SingleVideo";
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ export default function App() {
         </nav>
 
         <Switch>
-          <Route path="/video/:videoId" children={<Video />} />
+          <Route path="/video/:videoId" children={<SingleVideo />} />
           <Route path="/videos">
             <Videos />
           </Route>
