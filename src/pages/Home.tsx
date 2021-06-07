@@ -12,7 +12,7 @@ export function Home() {
         <p>logged in with google</p>
         <p>email: {account.profileObj.email}</p>
         <p>name: {account.profileObj.name}</p>
-        <img src={account.imageUrl} />
+        <img src={account.imageUrl} alt={'google pic'} />
       </div>
     );
   } else {
@@ -22,7 +22,7 @@ export function Home() {
         <p>logged in with facebook</p>
         <p>email: {account.email}</p>
         <p>name: {account.name}</p>
-        <img src={account.picture.data.url} />
+        <img src={account.picture.data.url}  alt={'facebook pic'} />
       </div>
     );
   }
