@@ -30,7 +30,6 @@ export function Login() {
       <br />
       <FacebookLogin
         appId={`${process.env.REACT_APP_FB_ID}`}
-        autoLoad={true}
         fields="name,email,picture"
         callback={responseFacebook}
       />

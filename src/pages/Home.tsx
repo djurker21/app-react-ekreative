@@ -5,14 +5,14 @@ export function Home() {
   const account = accountService.accountValue;
   let data;
 
-  if (account.profileObj) {
+  if (account && account.profileObj) {
     console.log("google");
     data = (
       <div>
         <p>logged in with google</p>
         <p>email: {account.profileObj.email}</p>
         <p>name: {account.profileObj.name}</p>
-        <img src={account.imageUrl} alt={'google pic'} />
+        <img src={account.profileObj.imageUrl} alt={'google pic'} />
       </div>
     );
   } else {

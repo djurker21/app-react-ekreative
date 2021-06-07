@@ -23,7 +23,7 @@ function loginFacebook(response: any) {
 function loginGoogleSuccess(response: any) {
   console.log(response);
   console.log("google login success");
-  accountSubject.next(response.profileObj);
+  accountSubject.next(response);
 }
 
 function loginGoogleFailure(response: any) {
