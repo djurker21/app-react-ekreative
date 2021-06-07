@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Videos } from "./pages/Videos";
 import { Login } from "./pages/Login";
 import { SingleVideo } from "./pages/SingleVideo";
+import { Home } from "./pages/Home";
+import { PrivateRoute } from "./pages/PrivateRoute";
 
 export default function App() {
   return (
@@ -11,7 +13,10 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Login</Link>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
             </li>
             <li>
               <Link to="/videos">Videos</Link>
@@ -24,9 +29,10 @@ export default function App() {
           <Route path="/videos">
             <Videos />
           </Route>
-          <Route path="/">
+          <Route path="/login">
             <Login />
           </Route>
+          <PrivateRoute exact path="/" component={Home} />
         </Switch>
       </div>
     </Router>

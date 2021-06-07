@@ -2,13 +2,14 @@ import React from "react";
 
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
+import { accountService } from "../services/account.service";
 
 const responseGoogle = (response: any) => {
-  console.log(response);
+  accountService.loginGoogle();
 };
 
 const responseFacebook = (response: any) => {
-  console.log(response);
+  accountService.loginFacebook();
 };
 
 export function Login() {
