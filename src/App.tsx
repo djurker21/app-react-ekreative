@@ -21,14 +21,16 @@ export default function App() {
             <li>
               <Link to="/videos">Videos</Link>
             </li>
+            <hr />
+            <li>
+              <Link to="/video/Z81fultxNKc">Test video</Link>
+            </li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path="/video/:videoId" children={<SingleVideo />} />
-          <Route path="/videos">
-            <Videos />
-          </Route>
+          <PrivateRoute exact path="/videos" component={Videos} />
+          <PrivateRoute exact path="/video/:videoId" component={SingleVideo} />
           <Route path="/login">
             <Login />
           </Route>
