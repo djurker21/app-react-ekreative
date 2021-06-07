@@ -5,15 +5,15 @@ import FacebookLogin from "react-facebook-login";
 import { accountService } from "../services/account.service";
 
 const responseGoogleSuccess = (response: any) => {
-  accountService.loginGoogleSuccess();
+  accountService.loginGoogleSuccess(response);
 };
 
 const responseGoogleFailure = (response: any) => {
-    accountService.loginGoogleFailure();
+  accountService.loginGoogleFailure(response);
 };
 
 const responseFacebook = (response: any) => {
-  accountService.loginFacebook();
+  accountService.loginFacebook(response);
 };
 
 export function Login() {

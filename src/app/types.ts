@@ -20,3 +20,17 @@ export interface Video {
 export interface YoutubeResult {
   items: Video[];
 }
+
+export interface GoogleProfileObj {
+  email: string;
+  name: string;
+  imageUrl: string;
+}
+
+export interface FacebookObj {
+  email: string;
+  name: string;
+  picture: {
+    data: { url: string };
+  };
+}

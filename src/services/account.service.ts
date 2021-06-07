@@ -7,20 +7,30 @@ export const accountService = {
   loginFacebook,
   loginGoogleSuccess,
   loginGoogleFailure,
+  logout,
   account: accountSubject.asObservable(),
   get accountValue() {
     return accountSubject.value;
   },
 };
 
-async function loginFacebook() {
+function loginFacebook(response: any) {
+  console.log(response);
   console.log("facebook login");
+  accountSubject.next(response);
 }
 
-async function loginGoogleSuccess() {
+function loginGoogleSuccess(response: any) {
+  console.log(response);
   console.log("google login success");
+  accountSubject.next(response.profileObj);
 }
 
-async function loginGoogleFailure() {
+function loginGoogleFailure(response: any) {
+  console.log(response);
   console.log("google login failure");
+}
+
+function logout() {
+  accountSubject.next("");
 }
