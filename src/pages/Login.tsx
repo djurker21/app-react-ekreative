@@ -4,8 +4,12 @@ import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import { accountService } from "../services/account.service";
 
-const responseGoogle = (response: any) => {
-  accountService.loginGoogle();
+const responseGoogleSuccess = (response: any) => {
+  accountService.loginGoogleSuccess();
+};
+
+const responseGoogleFailure = (response: any) => {
+    accountService.loginGoogleFailure();
 };
 
 const responseFacebook = (response: any) => {
@@ -19,8 +23,8 @@ export function Login() {
       <GoogleLogin
         clientId={`${process.env.REACT_APP_GOOGLE_ID}`}
         buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
+        onSuccess={responseGoogleSuccess}
+        onFailure={responseGoogleFailure}
         cookiePolicy={"single_host_origin"}
       />
       <br />
